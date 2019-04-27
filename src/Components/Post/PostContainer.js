@@ -17,7 +17,7 @@ const PostContainer = ({
   comments,
   createdAt,
   caption,
-  location
+  location,
 }) => {
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
@@ -52,6 +52,16 @@ const PostContainer = ({
     }
   }
 
+  const onKeyPress = e => {
+    const { keyCode } = e;
+    if(keyCode === 13) {
+      // e.preventDefault();
+      addCommentMutation();
+      comment.setValue("");
+
+    }
+  }
+
   return (
     <PostPresenter
       user={user}
@@ -67,6 +77,7 @@ const PostContainer = ({
       setLikeCount={setLikeCount}
       currentItem={currentItem}
       toggleLike={toggleLike}
+      onKeyPress={onKeyPress}
     />
   );
 };

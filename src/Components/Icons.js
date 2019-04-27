@@ -45,7 +45,7 @@ export const User = () => (
   </svg>
 );
 
-export const Comment = () => (
+export const CommentIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
