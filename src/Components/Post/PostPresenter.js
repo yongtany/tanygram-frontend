@@ -9,6 +9,7 @@ const Post = styled.div`
   ${props => props.theme.whiteBox};
   width: 100%;
   max-width: 600px;
+  user-select none;
   margin-bottom: 25px;
 `;
 
@@ -43,6 +44,7 @@ const File = styled.img`
   height: 600px;
   position: absolute;
   top: 0;
+  bottom: 0;
   opacity: ${props => (props.showing ? 1 : 0)};
   transition: opacity 0.5s linear;
 `;
@@ -93,7 +95,8 @@ export default ({
   likeCount,
   createdAt,
   newComment,
-  currentItem
+  currentItem,
+  toggleLike
 }) => (
   <Post>
     <Header>
@@ -108,7 +111,7 @@ export default ({
     </Files>
     <Meta>
       <Buttons>
-        <Button>{isLiked ? <HeartFull /> : <HeartEmpty />}</Button>
+        <Button onClick={toggleLike}>{isLiked ? <HeartFull /> : <HeartEmpty />}</Button>
         <Button>
           <Comment />
         </Button>
