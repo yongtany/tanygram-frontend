@@ -98,10 +98,15 @@ const Comments = styled.ul`
   }
 `;
 
+const Caption = styled.div`
+  margin: 10px 0px;
+`;
+
 export default ({
   user: { username, avatar },
   location,
   files,
+  caption,
   isLiked,
   likeCount,
   createdAt,
@@ -109,7 +114,8 @@ export default ({
   currentItem,
   toggleLike,
   onKeyPress,
-  comments
+  comments,
+  selfComments
 }) => (
   <Post>
     <Header>
@@ -130,9 +136,18 @@ export default ({
         </Button>
       </Buttons>
       <FatText text={likeCount === 1 ? "1 like" : `${likeCount} likes`} />
+      <Caption>
+        <FatText text={username} /> {caption}
+      </Caption>
       {comments && (
         <Comments>
           {comments.map(comment => (
+            <Comment key={comment.id}>
+              <FatText text={comment.user.username} />
+              {comment.text}
+            </Comment>
+          ))}
+          {selfComments.map(comment => (
             <Comment key={comment.id}>
               <FatText text={comment.user.username} />
               {comment.text}
@@ -142,10 +157,11 @@ export default ({
       )}
       <Timestamp>{createdAt}</Timestamp>
       <Textarea
+        onKeyPress={onKeyPress}
         placeholder={"Add a comment..."}
         value={newComment.value}
         onChange={newComment.onChange}
-        onKeyUp={onKeyPress} />
+      />
     </Meta>
   </Post>
 );

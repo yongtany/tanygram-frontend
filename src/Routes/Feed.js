@@ -1,10 +1,10 @@
-import React from 'react';
-import Helmet from 'rl-react-helmet';
-import styled from 'styled-components';
-import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo-hooks';
-import Loader from '../Components/Loader';
-import Post from '../Components/Post';
+import React from "react";
+import { Helmet } from "rl-react-helmet";
+import styled from "styled-components";
+import { gql } from "apollo-boost";
+import { useQuery } from "react-apollo-hooks";
+import Loader from "../Components/Loader";
+import Post from "../Components/Post";
 
 const FEED_QUERY = gql`
   {
@@ -28,7 +28,6 @@ const FEED_QUERY = gql`
         text
         user {
           id
-          avatar
           username
         }
       }
@@ -49,7 +48,7 @@ export default () => {
   return (
     <Wrapper>
       <Helmet>
-        <title>Feed | Tanygram</title>
+        <title>Feed | Prismagram</title>
       </Helmet>
       {loading && <Loader />}
       {!loading &&
@@ -71,4 +70,4 @@ export default () => {
         ))}
     </Wrapper>
   );
-}
+};
