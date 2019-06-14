@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { HeartFull, CommentFull } from "./Icons";
 
- const Overlay = styled.div`
+const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ import { HeartFull, CommentFull } from "./Icons";
   }
 `;
 
- const Container = styled.div`
+const Container = styled.div`
   background-image: url(${props => props.bg});
   background-size: cover;
   cursor: pointer;
@@ -26,9 +26,10 @@ import { HeartFull, CommentFull } from "./Icons";
       opacity: 1;
     }
   }
+  margin: 1rem;
 `;
 
- const Number = styled.div`
+const Number = styled.div`
   color: white;
   display: flex;
   align-items: center;
@@ -37,12 +38,12 @@ import { HeartFull, CommentFull } from "./Icons";
   }
 `;
 
- const NumberText = styled.span`
+const NumberText = styled.span`
   margin-left: 10px;
   font-size: 16px;
 `;
 
- const SquarePost = ({ likeCount, commentCount, file }) => (
+const SquarePost = ({ likeCount, commentCount, file }) => (
   <Container bg={file.url}>
     <Overlay>
       <Number>
@@ -57,10 +58,10 @@ import { HeartFull, CommentFull } from "./Icons";
   </Container>
 );
 
- SquarePost.propTypes = {
+SquarePost.propTypes = {
   likeCount: PropTypes.number.isRequired,
   commentCount: PropTypes.number.isRequired,
   file: PropTypes.object.isRequired
 };
 
- export default SquarePost;
+export default SquarePost;

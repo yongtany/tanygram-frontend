@@ -7,6 +7,7 @@ import UserCard from "../../Components/UserCard";
 import SquarePost from "../../Components/SquarePost";
 
 const Wrapper = styled.div`
+
 `;
 
 const Section = styled.div`
